@@ -1,0 +1,282 @@
+---
+---
+<section class="hero-section">
+  <!-- Immersive background image with gradients -->
+  <div class="hero-bg-wrapper">
+    <img src="/images/hero_bg.png" alt="Muse Café & Art Night Vibe" class="hero-bg-img" />
+    <div class="hero-overlay"></div>
+  </div>
+
+  <div class="container hero-container">
+    <div class="hero-content">
+      <!-- Monogram design element -->
+      <div class="hero-monogram animate-float">M</div>
+      
+      <span class="hero-subtitle">Gastronomy meets Artistry</span>
+      <h1 class="hero-title">
+        A <span class="text-gradient">Culture</span> of Taste
+      </h1>
+      
+      <div class="divider divider-gold">
+        <span class="divider-diamond"></span>
+      </div>
+      
+      <p class="hero-tagline">
+        Step into Palakkad's premier evening garden cafe. Where 8-hour slow-braised delicacies, gourmet artisanal coffee, and curated fine art unite under the stars.
+      </p>
+
+      <!-- Soft Launch Hours Tag -->
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Soft Launching: Fri – Sun, 4:00 PM – 1:00 AM
+      </div>
+
+      <div class="hero-buttons">
+        <a href="#menu" class="btn btn-primary pulse-gold">View The Menu</a>
+        <a href="#info" class="btn btn-secondary">Reserve a Table</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll Down Indicator -->
+  <a href="#about" class="scroll-indicator" aria-label="Scroll Down">
+    <span class="scroll-mouse">
+      <span class="scroll-wheel"></span>
+    </span>
+    <span class="scroll-text">Discover More</span>
+  </a>
+</section>
+
+<style>
+  /* Hero Container */
+  .hero-section {
+    position: relative;
+    height: 100vh;
+    min-height: 750px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-light);
+    overflow: hidden;
+    background-color: var(--color-primary-dark);
+  }
+
+  /* Background Wrapper & Overlays */
+  .hero-bg-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+
+  .hero-bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: brightness(0.6) contrast(1.05);
+    transform: scale(1.03);
+    animation: zoom-out 20s ease-out forwards;
+  }
+
+  @keyframes zoom-out {
+    0% { transform: scale(1.1); }
+    100% { transform: scale(1.03); }
+  }
+
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      to bottom,
+      rgba(11, 34, 22, 0.7) 0%,
+      rgba(11, 34, 22, 0.45) 50%,
+      rgba(5, 18, 11, 0.95) 100%
+    );
+  }
+
+  /* Content Styling */
+  .hero-container {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    margin-top: 4rem; /* Offset for floating header */
+  }
+
+  .hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-monogram {
+    font-family: var(--font-serif);
+    font-size: 2.2rem;
+    font-weight: 700;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-gold);
+    border-radius: 50%;
+    color: var(--color-gold-bright);
+    background-color: rgba(11, 34, 22, 0.6);
+    backdrop-filter: blur(5px);
+    margin-bottom: 2rem;
+    position: relative;
+  }
+
+  .hero-monogram::after {
+    content: '';
+    position: absolute;
+    top: -5px;
+    bottom: -5px;
+    left: -5px;
+    right: -5px;
+    border-radius: 50%;
+    border: 1px dashed rgba(197, 168, 128, 0.3);
+  }
+
+  .hero-subtitle {
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    color: var(--color-gold);
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-title {
+    font-size: 4.8rem;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+
+  @media (max-width: 768px) {
+    .hero-title {
+      font-size: 3rem;
+    }
+  }
+
+  .hero-tagline {
+    font-size: 1.25rem;
+    line-height: 1.7;
+    color: var(--color-text-light-muted);
+    margin-bottom: 2rem;
+    max-width: 650px;
+  }
+
+  @media (max-width: 768px) {
+    .hero-tagline {
+      font-size: 1.05rem;
+    }
+  }
+
+  /* Soft launch timing badge */
+  .hero-badge {
+    background-color: rgba(197, 168, 128, 0.08);
+    border: 1px solid rgba(197, 168, 128, 0.25);
+    border-radius: 50px;
+    padding: 0.5rem 1.5rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--color-gold-light);
+    margin-bottom: 3rem;
+    backdrop-filter: blur(5px);
+  }
+
+  .badge-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--color-gold-bright);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--color-gold-bright);
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    width: 100%;
+  }
+
+  @media (max-width: 576px) {
+    .hero-buttons {
+      flex-direction: column;
+      align-items: stretch;
+      max-width: 280px;
+      margin: 0 auto;
+    }
+  }
+
+  /* Scroll Indicator styling */
+  .scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0.7;
+    transition: var(--transition-smooth);
+  }
+
+  .scroll-indicator:hover {
+    opacity: 1;
+    transform: translate(-50%, -4px);
+  }
+
+  .scroll-mouse {
+    width: 24px;
+    height: 38px;
+    border: 2px solid var(--color-gold);
+    border-radius: 12px;
+    position: relative;
+  }
+
+  .scroll-wheel {
+    width: 4px;
+    height: 8px;
+    background-color: var(--color-gold-bright);
+    border-radius: 2px;
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: scroll-anim 2s infinite;
+  }
+
+  @keyframes scroll-anim {
+    0% { opacity: 0; transform: translate(-50%, 0); }
+    40% { opacity: 1; }
+    80% { opacity: 0; transform: translate(-50%, 12px); }
+    100% { opacity: 0; }
+  }
+
+  .scroll-text {
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-gold-light);
+  }
+</style>

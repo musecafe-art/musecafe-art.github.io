@@ -1,0 +1,707 @@
+---
+---
+<section id="info" class="section section-dark info-section">
+  <div class="container">
+    <div class="info-grid">
+      
+      <!-- Column 1: Timings & Location -->
+      <div class="details-card">
+        <span class="section-subtitle">Reserve & Visit</span>
+        <h2 class="section-title">Schedule & <span class="text-gradient">Contact</span></h2>
+        <div class="about-divider">
+          <span class="divider-diamond"></span>
+          <span class="divider-line"></span>
+        </div>
+        
+        <p class="desc-text">
+          Currently in our soft launch phase, we open our garden gallery every weekend evening to create a magical nighttime dining experience.
+        </p>
+
+        <!-- Dynamic Timings List -->
+        <div class="timings-list">
+          <div class="time-row active-day">
+            <span class="day">Friday</span>
+            <span class="dots"></span>
+            <span class="hours">4:00 PM &ndash; 1:00 AM</span>
+          </div>
+          <div class="time-row active-day">
+            <span class="day">Saturday</span>
+            <span class="dots"></span>
+            <span class="hours">4:00 PM &ndash; 1:00 AM</span>
+          </div>
+          <div class="time-row active-day">
+            <span class="day">Sunday</span>
+            <span class="dots"></span>
+            <span class="hours">4:00 PM &ndash; 1:00 AM</span>
+          </div>
+          <div class="time-row closed-day">
+            <span class="day">Monday &ndash; Thursday</span>
+            <span class="dots"></span>
+            <span class="hours">Closed (Studio Days)</span>
+          </div>
+        </div>
+
+        <!-- Contact Detail Items -->
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="icon">📍</div>
+            <div class="info-details">
+              <h4>Location</h4>
+              <p>100 Feet Road, Near Town, Palakkad, Kerala 678001</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="icon">📞</div>
+            <div class="info-details">
+              <h4>Reservations & Inquiries</h4>
+              <p>+91 98460 12345</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="icon">✉️</div>
+            <div class="info-details">
+              <h4>General Inquiries</h4>
+              <p>hello@musecafe.art</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Column 2: Elegant Custom Styled Map Frame -->
+      <div class="map-card">
+        <div class="map-frame">
+          <div class="map-overlay">
+            <div class="map-pin animate-float">📍</div>
+            <div class="map-pin-details">
+              <h3>MUSE Café & Art</h3>
+              <p>100 Feet Road, Palakkad</p>
+              <a href="https://maps.app.goo.gl/1e6n8QyuacGUvUMW8" target="_blank" rel="noopener noreferrer" class="map-btn">Open in Google Maps</a>
+            </div>
+          </div>
+          <!-- Clean theme matching stylized canvas backdrop -->
+          <div class="map-canvas">
+            <div class="map-road road-1"></div>
+            <div class="map-road road-2"></div>
+            <div class="map-river"></div>
+            <div class="map-greenery-1"></div>
+            <div class="map-greenery-2"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 2: Table Booking Inquiry Form -->
+    <div class="inquiry-wrapper" id="inquiry">
+      <div class="inquiry-form-card">
+        <div class="monogram-badge">M</div>
+        <h3 class="inquiry-title">Table Inquiry</h3>
+        <p class="inquiry-subtitle">Plan an evening of curated gastronomy & art</p>
+        
+        <form id="reservation-form" class="inquiry-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" required placeholder="e.g., Arunachalam" />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" required placeholder="e.g., +91 98765 43210" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="guests">Guests Count</label>
+              <select id="guests" required>
+                <option value="2">2 Guests (Intimate)</option>
+                <option value="4">4 Guests (Standard)</option>
+                <option value="6">6 Guests (Dinner Gathering)</option>
+                <option value="8">8+ Guests (Art Showcase Group)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="date">Select Date (Fri - Sun only)</label>
+              <input type="date" id="date" required />
+            </div>
+            <div class="form-group">
+              <label for="time">Select Time (4:00 PM - 1:00 AM)</label>
+              <input type="time" id="time" min="16:00" max="23:00" required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Special Requests / Art Inquiry</label>
+            <textarea id="message" rows="3" placeholder="Let us know if you are interested in acquiring displayed art pieces, hosting a private viewing, or have dietary preferences..."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary form-submit-btn">Send Booking Inquiry</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Success Confirmation Modal Popup -->
+  <div class="success-modal" id="success-modal" aria-hidden="true" role="dialog">
+    <div class="success-card">
+      <div class="success-icon">✓</div>
+      <h3>Inquiry Received Successfully</h3>
+      <p class="success-msg">
+        Thank you, <strong id="user-name-fill">guest</strong>! We have received your evening table request for <strong id="date-fill">date</strong> at <strong id="time-fill">time</strong> for <strong id="guests-fill">count</strong> guests.
+      </p>
+      <p class="success-note">
+        Our gallery concierge will contact you via phone within 2 hours to confirm your table placement in the night garden or inner studio room.
+      </p>
+      <button class="btn btn-dark modal-close-btn" id="modal-close">Close Window</button>
+    </div>
+    <div class="success-overlay" id="success-bg"></div>
+  </div>
+</section>
+
+<style>
+  .info-section {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4rem;
+    align-items: stretch;
+    margin-bottom: 5rem;
+  }
+
+  @media (max-width: 991px) {
+    .info-grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+  }
+
+  /* Details Card Column */
+  .details-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .about-divider {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 0.5rem 0 2rem 0;
+  }
+
+  .divider-line {
+    height: 1px;
+    flex-grow: 1;
+    max-width: 120px;
+    background: linear-gradient(90deg, var(--color-gold), transparent);
+  }
+
+  .desc-text {
+    font-size: 1.05rem;
+    color: var(--color-text-light-muted);
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+  }
+
+  /* Timings List */
+  .timings-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 3.5rem;
+  }
+
+  .time-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1rem;
+    padding: 0.25rem 0;
+  }
+
+  .dots {
+    flex-grow: 1;
+    border-bottom: 1px dotted rgba(197, 168, 128, 0.2);
+    margin: 0 1rem;
+    height: 1px;
+  }
+
+  .active-day .day {
+    font-weight: 600;
+    color: var(--color-text-light);
+  }
+
+  .active-day .hours {
+    color: var(--color-gold-bright);
+    font-weight: 600;
+  }
+
+  .closed-day {
+    opacity: 0.45;
+  }
+
+  /* Contact Items */
+  .contact-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+    border-top: 1px solid rgba(197, 168, 128, 0.15);
+    padding-top: 2rem;
+  }
+
+  .contact-item {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+  }
+
+  .contact-item .icon {
+    font-size: 1.5rem;
+    background-color: rgba(197, 168, 128, 0.08);
+    border: 1px solid rgba(197, 168, 128, 0.25);
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .info-details h4 {
+    font-family: var(--font-sans);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--color-text-light);
+    margin-bottom: 0.25rem;
+  }
+
+  .info-details p {
+    font-size: 0.92rem;
+    color: var(--color-text-light-muted);
+    line-height: 1.4;
+  }
+
+  /* Column 2: Stylized Mock Map Card */
+  .map-card {
+    display: flex;
+    align-items: center;
+  }
+
+  .map-frame {
+    width: 100%;
+    height: 480px;
+    border: 1px solid var(--color-gold);
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 10px 45px rgba(5, 18, 11, 0.5);
+    background-color: var(--color-primary-dark);
+  }
+
+  /* Custom Aesthetic Map graphics */
+  .map-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.15;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  .map-road {
+    background-color: var(--color-cream);
+    position: absolute;
+  }
+
+  .road-1 {
+    top: 40%;
+    left: 0;
+    width: 100%;
+    height: 35px;
+    transform: rotate(-10deg);
+  }
+
+  .road-2 {
+    top: 0;
+    left: 45%;
+    width: 30px;
+    height: 100%;
+    transform: rotate(20deg);
+  }
+
+  .map-river {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background-color: var(--color-gold-light);
+    clip-path: polygon(0 40%, 20% 45%, 40% 38%, 60% 48%, 80% 42%, 100% 50%, 100% 100%, 0 100%);
+  }
+
+  .map-greenery-1 {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    width: 120px;
+    height: 90px;
+    background-color: var(--color-gold);
+    border-radius: 50%;
+    filter: blur(20px);
+  }
+
+  .map-greenery-2 {
+    position: absolute;
+    bottom: 20%;
+    right: 15%;
+    width: 150px;
+    height: 110px;
+    background-color: var(--color-gold-dark);
+    border-radius: 50%;
+    filter: blur(25px);
+  }
+
+  /* Map overlay details card */
+  .map-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    background: radial-gradient(circle, transparent 40%, rgba(11, 34, 22, 0.8) 100%);
+  }
+
+  .map-pin {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    filter: drop-shadow(0 5px 15px rgba(5, 18, 11, 0.8));
+  }
+
+  .map-pin-details {
+    background-color: rgba(11, 34, 22, 0.9);
+    border: 1px solid var(--color-gold);
+    padding: 2rem;
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-lg);
+    text-align: center;
+    max-width: 320px;
+    backdrop-filter: blur(10px);
+  }
+
+  .map-pin-details h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-text-light);
+  }
+
+  .map-pin-details p {
+    font-size: 0.85rem;
+    color: var(--color-text-light-muted);
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
+  }
+
+  .map-btn {
+    display: inline-block;
+    padding: 0.65rem 1.5rem;
+    background-color: var(--color-gold);
+    color: var(--color-primary-dark);
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    border-radius: var(--border-radius-sm);
+    transition: var(--transition-smooth);
+  }
+
+  .map-btn:hover {
+    background-color: var(--color-gold-bright);
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+    transform: translateY(-2px);
+  }
+
+  /* Inquiry Form Styles */
+  .inquiry-wrapper {
+    margin-top: 7rem;
+  }
+
+  .inquiry-form-card {
+    background-color: rgba(22, 54, 37, 0.3);
+    border: 1px solid rgba(197, 168, 128, 0.15);
+    border-radius: var(--border-radius-md);
+    padding: 4.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+    box-shadow: 0 15px 50px rgba(5, 18, 11, 0.4);
+    backdrop-filter: blur(10px);
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    .inquiry-form-card {
+      padding: 2.5rem 1.5rem;
+    }
+  }
+
+  .inquiry-title {
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-text-light);
+  }
+
+  .inquiry-subtitle {
+    font-size: 0.95rem;
+    color: var(--color-gold);
+    margin-bottom: 3.5rem;
+    font-weight: 500;
+  }
+
+  /* Form Elements */
+  .inquiry-form {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .form-group label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-text-light-muted);
+  }
+
+  .form-group input, 
+  .form-group select, 
+  .form-group textarea {
+    background-color: rgba(5, 18, 11, 0.6);
+    border: 1px solid rgba(197, 168, 128, 0.2);
+    border-radius: var(--border-radius-sm);
+    padding: 1rem 1.25rem;
+    font-family: var(--font-sans);
+    color: var(--color-text-light);
+    font-size: 0.95rem;
+    transition: var(--transition-smooth);
+    width: 100%;
+  }
+
+  .form-group input:focus, 
+  .form-group select:focus, 
+  .form-group textarea:focus {
+    border-color: var(--color-gold-bright);
+    background-color: rgba(5, 18, 11, 0.85);
+    box-shadow: 0 0 12px rgba(197, 168, 128, 0.15);
+  }
+
+  .form-group select option {
+    background-color: var(--color-primary-dark);
+    color: var(--color-text-light);
+  }
+
+  .form-submit-btn {
+    margin-top: 1rem;
+    padding: 1.25rem;
+    font-size: 0.95rem;
+  }
+
+  /* Success Confirmation Modal Dialog */
+  .success-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+  }
+
+  .success-modal.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .success-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(5, 18, 11, 0.85);
+    backdrop-filter: blur(10px);
+    z-index: 1;
+  }
+
+  .success-card {
+    position: relative;
+    z-index: 2;
+    background-color: var(--color-primary);
+    border: 1px solid var(--color-gold-bright);
+    border-radius: var(--border-radius-md);
+    padding: 3.5rem;
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+    box-shadow: var(--shadow-lg);
+    color: var(--color-text-light);
+    transform: scale(0.95);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .success-modal.open .success-card {
+    transform: scale(1);
+  }
+
+  .success-icon {
+    font-size: 2rem;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 2px solid var(--color-gold-bright);
+    color: var(--color-gold-bright);
+    background-color: rgba(197, 168, 128, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.75rem auto;
+    font-weight: 700;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.25);
+  }
+
+  .success-card h3 {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+    color: var(--color-text-light);
+  }
+
+  .success-msg {
+    font-size: 1rem;
+    color: var(--color-text-light-muted);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .success-msg strong {
+    color: var(--color-gold);
+  }
+
+  .success-note {
+    font-size: 0.85rem;
+    color: rgba(197, 168, 128, 0.6);
+    line-height: 1.5;
+    background-color: rgba(5, 18, 11, 0.4);
+    padding: 1rem;
+    border-radius: 6px;
+    border: 1px solid rgba(197, 168, 128, 0.08);
+    margin-bottom: 2rem;
+  }
+
+  .modal-close-btn {
+    width: 100%;
+    padding: 1rem;
+  }
+</style>
+
+<script>
+  // Form Reservation Handling & Popup
+  const form = document.getElementById('reservation-form') as HTMLFormElement;
+  const successModal = document.getElementById('success-modal');
+  const modalClose = document.getElementById('modal-close');
+  const bgClose = document.getElementById('success-bg');
+
+  // Value fill elements
+  const userNameFill = document.getElementById('user-name-fill');
+  const dateFill = document.getElementById('date-fill');
+  const timeFill = document.getElementById('time-fill');
+  const guestsFill = document.getElementById('guests-fill');
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    // Get input elements safely
+    const nameInput = document.getElementById('name') as HTMLInputElement;
+    const phoneInput = document.getElementById('phone') as HTMLInputElement;
+    const guestsInput = document.getElementById('guests') as HTMLSelectElement;
+    const dateInput = document.getElementById('date') as HTMLInputElement;
+    const timeInput = document.getElementById('time') as HTMLInputElement;
+
+    const name = nameInput.value;
+    const phone = phoneInput.value;
+    const guests = guestsInput.value;
+    const dateVal = dateInput.value;
+    const timeVal = timeInput.value;
+
+    // Check date (must be Friday, Saturday or Sunday)
+    const selectedDate = new Date(dateVal);
+    const dayOfWeek = selectedDate.getDay(); // 0 is Sunday, 5 is Friday, 6 is Saturday
+    const isWeekend = dayOfWeek === 0 || dayOfWeek === 5 || dayOfWeek === 6;
+
+    if (!isWeekend) {
+      alert("Please note we are currently in Soft Launch, open only Friday, Saturday, and Sunday. Please select a weekend date to inquire.");
+      return;
+    }
+
+    // Format date beautifully
+    const options: Intl.DateTimeFormatOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    const formattedDate = selectedDate.toLocaleDateString('en-US', options);
+
+    // Formatted time 12h format
+    const [hours, minutes] = timeVal.split(':');
+    const hoursNum = parseInt(hours);
+    const ampm = hoursNum >= 12 ? 'PM' : 'AM';
+    const hours12 = hoursNum % 12 || 12;
+    const formattedTime = `${hours12}:${minutes} ${ampm}`;
+
+    // Fill modal labels
+    if (userNameFill) userNameFill.textContent = name;
+    if (dateFill) dateFill.textContent = formattedDate;
+    if (timeFill) timeFill.textContent = formattedTime;
+    if (guestsFill) guestsFill.textContent = guests;
+
+    // Show modal
+    successModal?.classList.add('open');
+    successModal?.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+
+    // Reset Form
+    form.reset();
+  });
+
+  function closeModal() {
+    successModal?.classList.remove('open');
+    successModal?.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  modalClose?.addEventListener('click', closeModal);
+  bgClose?.addEventListener('click', closeModal);
+</script>

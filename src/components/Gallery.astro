@@ -1,0 +1,532 @@
+---
+const artworks = [
+  {
+    id: 1,
+    title: 'The Inner Atelier',
+    category: 'Exhibition Room',
+    desc: 'Rotational curation of local abstract oil canvases over smooth warm clay walls.',
+    image: '/images/gallery.png',
+    span: 'tall'
+  },
+  {
+    id: 2,
+    title: 'Gourmet Composition',
+    category: 'Fine Gastronomy',
+    desc: 'The slow-braised veal shank Ossobuco on velvety yellow creamed potatoes.',
+    image: '/images/ossobuco.png',
+    span: 'wide'
+  },
+  {
+    id: 3,
+    title: 'Precision Extraction',
+    category: 'Espresso Craft',
+    desc: 'A dedicated pour of double ristretto showing smooth microfoam latte art.',
+    image: '/images/coffee.png',
+    span: 'normal'
+  },
+  {
+    id: 4,
+    title: 'Bistro Nocturne',
+    category: 'Night Garden',
+    desc: 'Warm string lights and cozy garden greenery setting the perfect dining mood.',
+    image: '/images/hero_bg.png',
+    span: 'normal'
+  }
+];
+---
+
+<section id="gallery" class="section section-light gallery-section">
+  <!-- Elegant background patterns -->
+  <div class="gallery-bg-decor"></div>
+
+  <div class="container">
+    <!-- Section Header -->
+    <div class="section-header">
+      <span class="section-subtitle">Exhibition</span>
+      <h2 class="section-title">The Art & <span class="text-gold">Atmosphere</span></h2>
+      <div class="divider divider-gold">
+        <span class="divider-diamond"></span>
+      </div>
+      <p class="section-desc">
+        A visual stroll through our gallery space, where every corner is designed to inspire and every plate is curated as a work of fine art.
+      </p>
+    </div>
+
+    <!-- Art Gallery Mosaic Grid -->
+    <div class="gallery-grid">
+      {artworks.map(art => (
+        <div 
+          class={`gallery-item item-${art.span}`}
+          data-image={art.image}
+          data-title={art.title}
+          data-category={art.category}
+          data-desc={art.desc}
+        >
+          <!-- Frame Border Ornament -->
+          <div class="gallery-frame">
+            <img src={art.image} alt={art.title} class="gallery-img" />
+            <div class="gallery-overlay">
+              <span class="gallery-cat">{art.category}</span>
+              <h3 class="gallery-item-title">{art.title}</h3>
+              <p class="gallery-item-desc">{art.desc}</p>
+              <button class="btn-zoom" aria-label="Zoom Image">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  <line x1="11" y1="8" x2="11" y2="14"></line>
+                  <line x1="8" y1="11" x2="14" y2="11"></line>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Lightbox Modal Portal -->
+  <div class="lightbox-modal" id="lightbox-modal" aria-hidden="true" role="dialog">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close Lightbox">&times;</button>
+    <button class="lightbox-arrow lightbox-prev" id="lightbox-prev" aria-label="Previous Image">&#10094;</button>
+    
+    <div class="lightbox-content">
+      <div class="lightbox-img-frame">
+        <img src="" alt="" id="lightbox-img" />
+      </div>
+      <div class="lightbox-details">
+        <span class="lightbox-cat" id="lightbox-cat">Category</span>
+        <h3 class="lightbox-title" id="lightbox-title">Title</h3>
+        <p class="lightbox-desc" id="lightbox-desc">Description</p>
+      </div>
+    </div>
+    
+    <button class="lightbox-arrow lightbox-next" id="lightbox-next" aria-label="Next Image">&#10095;</button>
+    <div class="lightbox-overlay" id="lightbox-bg"></div>
+  </div>
+</section>
+
+<style>
+  .gallery-section {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .gallery-bg-decor {
+    position: absolute;
+    bottom: -100px;
+    left: -100px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(197, 168, 128, 0.04) 0%, transparent 70%);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .container {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Mosaic Grid Layout */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 280px;
+    gap: 2rem;
+  }
+
+  .gallery-item {
+    cursor: pointer;
+  }
+
+  .gallery-frame {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: var(--border-radius-sm);
+    border: 1px solid rgba(11, 34, 22, 0.05);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    background-color: var(--color-primary-dark);
+  }
+
+  .gallery-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Grid span behaviors */
+  .item-tall {
+    grid-row: span 2;
+  }
+
+  .item-wide {
+    grid-column: span 2;
+  }
+
+  @media (max-width: 991px) {
+    .gallery-grid {
+      grid-template-columns: repeat(2, 1fr);
+      grid-auto-rows: 240px;
+    }
+    .item-wide {
+      grid-column: span 2;
+    }
+    .item-tall {
+      grid-row: span 1;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .gallery-grid {
+      grid-template-columns: 1fr;
+      grid-auto-rows: 300px;
+      gap: 1.5rem;
+    }
+    .item-wide {
+      grid-column: span 1;
+    }
+    .item-tall {
+      grid-row: span 1;
+    }
+  }
+
+  /* Hover Card Overlays */
+  .gallery-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      to bottom,
+      rgba(11, 34, 22, 0.1) 0%,
+      rgba(11, 34, 22, 0.4) 50%,
+      rgba(11, 34, 22, 0.95) 100%
+    );
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 2rem;
+    transition: opacity 0.4s ease;
+    z-index: 2;
+  }
+
+  .gallery-item:hover .gallery-overlay {
+    opacity: 1;
+  }
+
+  .gallery-item:hover .gallery-img {
+    transform: scale(1.05);
+  }
+
+  .gallery-cat {
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-gold-bright);
+    margin-bottom: 0.5rem;
+  }
+
+  .gallery-item-title {
+    font-size: 1.4rem;
+    color: var(--color-text-light);
+    margin-bottom: 0.25rem;
+    line-height: 1.2;
+  }
+
+  .gallery-item-desc {
+    font-size: 0.85rem;
+    color: var(--color-text-light-muted);
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .btn-zoom {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: rgba(197, 168, 128, 0.25);
+    color: var(--color-text-light);
+    border: 1px solid rgba(197, 168, 128, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-smooth);
+    opacity: 0;
+    transform: scale(0.8);
+  }
+
+  .gallery-item:hover .btn-zoom {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .btn-zoom:hover {
+    background-color: var(--color-gold-bright);
+    color: var(--color-primary-dark);
+    transform: scale(1.05);
+  }
+
+  /* Lightbox Modal Styles */
+  .lightbox-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+  }
+
+  .lightbox-modal.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .lightbox-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(5, 18, 11, 0.95);
+    backdrop-filter: blur(15px);
+    z-index: 1;
+  }
+
+  .lightbox-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    width: 90%;
+    background-color: var(--color-primary);
+    border: 1px solid rgba(197, 168, 128, 0.25);
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    transform: scale(0.95);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .lightbox-modal.open .lightbox-content {
+    transform: scale(1);
+  }
+
+  @media (max-width: 768px) {
+    .lightbox-content {
+      grid-template-columns: 1fr;
+      max-height: 85vh;
+      overflow-y: auto;
+    }
+  }
+
+  .lightbox-img-frame {
+    position: relative;
+    background-color: var(--color-primary-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-height: 550px;
+  }
+
+  .lightbox-img-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .lightbox-details {
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: var(--color-text-light);
+  }
+
+  @media (max-width: 576px) {
+    .lightbox-details {
+      padding: 1.5rem;
+    }
+  }
+
+  .lightbox-cat {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-gold-bright);
+    margin-bottom: 0.75rem;
+    display: block;
+  }
+
+  .lightbox-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--color-text-light);
+  }
+
+  .lightbox-desc {
+    font-size: 0.95rem;
+    color: var(--color-text-light-muted);
+    line-height: 1.7;
+  }
+
+  /* Close and Arrow Buttons */
+  .lightbox-close {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    font-size: 3rem;
+    color: var(--color-text-light-muted);
+    z-index: 3;
+    transition: var(--transition-smooth);
+    line-height: 1;
+  }
+
+  .lightbox-close:hover {
+    color: var(--color-gold-bright);
+    transform: rotate(90deg);
+  }
+
+  .lightbox-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    background-color: rgba(197, 168, 128, 0.1);
+    color: var(--color-gold);
+    border: 1px solid rgba(197, 168, 128, 0.25);
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    transition: var(--transition-smooth);
+  }
+
+  .lightbox-arrow:hover {
+    background-color: var(--color-gold);
+    color: var(--color-primary-dark);
+    border-color: var(--color-gold);
+  }
+
+  .lightbox-prev {
+    left: 2rem;
+  }
+
+  .lightbox-next {
+    right: 2rem;
+  }
+
+  @media (max-width: 1100px) {
+    .lightbox-arrow {
+      display: none; /* Hide arrows on small screens, click background to exit */
+    }
+  }
+</style>
+
+<script>
+  // Lightbox Functionality
+  const galleryItems = document.querySelectorAll('.gallery-item');
+  const modal = document.getElementById('lightbox-modal');
+  const modalImg = document.getElementById('lightbox-img') as HTMLImageElement;
+  const modalCat = document.getElementById('lightbox-cat');
+  const modalTitle = document.getElementById('lightbox-title');
+  const modalDesc = document.getElementById('lightbox-desc');
+  const closeBtn = document.getElementById('lightbox-close');
+  const bgOverlay = document.getElementById('lightbox-bg');
+  const prevBtn = document.getElementById('lightbox-prev');
+  const nextBtn = document.getElementById('lightbox-next');
+
+  let currentIndex = 0;
+  const itemData: any[] = [];
+
+  // Parse gallery item datasets
+  galleryItems.forEach((item, index) => {
+    const el = item as HTMLElement;
+    itemData.push({
+      image: el.getAttribute('data-image') || '',
+      title: el.getAttribute('data-title') || '',
+      category: el.getAttribute('data-category') || '',
+      desc: el.getAttribute('data-desc') || ''
+    });
+
+    item.addEventListener('click', () => {
+      currentIndex = index;
+      openLightbox();
+    });
+  });
+
+  function openLightbox() {
+    updateLightboxContent();
+    modal?.classList.add('open');
+    modal?.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    modal?.classList.remove('open');
+    modal?.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  function updateLightboxContent() {
+    const currentItem = itemData[currentIndex];
+    if (currentItem) {
+      if (modalImg) {
+        modalImg.src = currentItem.image;
+        modalImg.alt = currentItem.title;
+      }
+      if (modalCat) modalCat.textContent = currentItem.category;
+      if (modalTitle) modalTitle.textContent = currentItem.title;
+      if (modalDesc) modalDesc.textContent = currentItem.desc;
+    }
+  }
+
+  function showNext() {
+    currentIndex = (currentIndex + 1) % itemData.length;
+    updateLightboxContent();
+  }
+
+  function showPrev() {
+    currentIndex = (currentIndex - 1 + itemData.length) % itemData.length;
+    updateLightboxContent();
+  }
+
+  // Event Listeners
+  closeBtn?.addEventListener('click', closeLightbox);
+  bgOverlay?.addEventListener('click', closeLightbox);
+  nextBtn?.addEventListener('click', showNext);
+  prevBtn?.addEventListener('click', showPrev);
+
+  // Keyboard navigation
+  window.addEventListener('keydown', (e) => {
+    if (modal?.classList.contains('open')) {
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight') showNext();
+      if (e.key === 'ArrowLeft') showPrev();
+    }
+  });
+</script>
